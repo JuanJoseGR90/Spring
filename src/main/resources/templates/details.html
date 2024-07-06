@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaft.org">
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}">Users</title>
 </head>
 <body>
-    <h1>Hola máquina!</h1>
+    <h1>¡Hola máquina!</h1>
     <ul>
-        <li th:text="${name}"></li>
-        <li th:text="${lastName}"></li>
+        <li th:text="${user.name}"></li>
+        <li th:text="${user.lastname}"></li>
     </ul>
 </body>
 </html>
