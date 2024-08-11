@@ -11,6 +11,8 @@
     <ul>
         <li th:text="${name}"></li>
         <li th:text="${lastname}"></li>
+        <li th:if="${email != null}" th:text="${email}"></li>
+        <li th:if="${email == null}" th:text="${'NO E-MAIL'}"></li>
     </ul>
 </body>
 </html>

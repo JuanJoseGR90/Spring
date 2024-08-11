@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +38,7 @@ public class UserRestController {
          */
 
     @GetMapping("/details3")
-    public UserDto detailsDto (Model model) {
+    public UserDto detailsDto () {
         
         User user = new User("Juan José", "G.R.");
         UserDto userDto = new UserDto();
@@ -51,7 +50,7 @@ public class UserRestController {
     }
 
     @GetMapping("/details2")
-    public Map<String, Object> details (Model model) {
+    public Map<String, Object> details () {
         
         User user = new User("Juan José", "G.R.");
         Map<String, Object> body = new HashMap<>();
@@ -77,6 +76,19 @@ public class UserRestController {
         List<User> list = Arrays.asList(user, user2);
 
         return list;
+    }
+
+    @GetMapping("/detailsMapJsRest")
+    public Map<String, Object> detailsMapJs () {
+        
+        Map<String, Object> modelMap = new HashMap<>();
+
+        modelMap.put("title", "Saludando con map");
+        modelMap.put("name", "hellrider");
+        modelMap.put("lastname", "1990");
+        modelMap.put("email", "hellrider@hotmail.com");
+
+        return modelMap;
     }
 
 }

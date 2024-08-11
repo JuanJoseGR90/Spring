@@ -1,8 +1,19 @@
 package com.curso.spring;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.curso.spring.models.User;
+
+
+
 
 @Controller
 public class UserController {
@@ -33,14 +44,15 @@ public class UserController {
 
         model.addAttribute("title", "Hola Spring!")
         .addAttribute("name", "Juan José")
-        .addAttribute("lastname", "G.R.");
+        .addAttribute("lastname", "G.R.")
+        .addAttribute("email", "hellrider@hotmail.com");
 
         return "details";
     }
 
-    /*
-    @GetMapping("/details")
-    public String details (Map<String, Object> model) {
+    
+    @GetMapping("/detailsMap")
+    public String detailsMap (Map<String, Object> model) {
 
         model.put("title", "Hola Spring!");
         model.put("name", "Juan José");
@@ -48,7 +60,31 @@ public class UserController {
 
         return "details";
     }
-    */
 
 
+    @GetMapping("/detailsMapJs")
+    @ResponseBody
+    public Map<String, Object> detailsMapJs () {
+        
+        Map<String, Object> modelMap = new HashMap<>();
+
+        modelMap.put("title", "Saludando con map");
+        modelMap.put("name", "hellrider");
+        modelMap.put("lastname", "1990");
+        modelMap.put("email", "hellrider@hotmail.com");
+
+        return modelMap;
+    }
+
+    @GetMapping("/listaUsuarios")
+    public String listUsuarios(Model model) {
+
+        List<User> users = new ArrayList<>();
+
+        model.addAttribute("users", users);
+        model.addAttribute("title", "Lista de usuarios");
+
+        return "list";
+    }
+    
 }
