@@ -7,12 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
+import java.util.*;
 
 
 @Controller
@@ -80,9 +75,23 @@ public class UserController {
     public String listUsuarios(ModelMap model) {
 
         List<User> users = Arrays.asList(
-                new User("Juan José", "G.R", "juanjose@gmail.com"),
-                new User("Hellrider", "1990")
+                new User("Juan", "G.R", "juan@gmail.com"),
+                new User("Hellrider", "Ozone")
         );
+
+        model.addAttribute("users", users);
+        model.addAttribute("title", "Lista de usuarios");
+
+        return "list";
+    }
+
+    @GetMapping("/listaUsuarios2")
+    public String listUsuarios2 (ModelMap model) {
+
+        List<User> users = new ArrayList<>();
+
+        users.add(new User("Juan2", "G.R", "juan@gmail.com"));
+        users.add(new User("Hellrider2", "Ozone"));
 
         model.addAttribute("users", users);
         model.addAttribute("title", "Lista de usuarios");
