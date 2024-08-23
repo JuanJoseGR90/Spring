@@ -1,16 +1,16 @@
 package com.curso.spring;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.curso.spring.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.curso.spring.models.User;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 
@@ -77,9 +77,12 @@ public class UserController {
     }
 
     @GetMapping("/listaUsuarios")
-    public String listUsuarios(Model model) {
+    public String listUsuarios(ModelMap model) {
 
-        List<User> users = new ArrayList<>();
+        List<User> users = Arrays.asList(
+                new User("Juan José", "G.R", "juanjose@gmail.com"),
+                new User("Hellrider", "1990")
+        );
 
         model.addAttribute("users", users);
         model.addAttribute("title", "Lista de usuarios");
